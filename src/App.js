@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route, Link as PageLink } from 'react-router-dom'
+import { useComposeProviders } from 'hooks'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Layout from 'layout'
+import { Chat, Home, InitAppPage, /*TestComponents*/ } from 'pages'
+import { ScreenSizeContextProvider } from 'context/ScreenSizeContext'
+
+const routes = {
+  home: '/',
+  app: '/app',
+  chat: '/chat',
+  // testComponents: '/testComponents',
 }
 
-export default App;
+const routeName = {
+  home: 'Home',
+  app: 'App',
+  chat: 'Chat',
+  // testComponents: 'Test Components',
+}
+
+const routeElement = {
+  home: <Home />,
+  app: <InitAppPage />,
+  chat: <Chat />,
+  // testComponents: <TestComponents />,
+}
+
+const App = () => {
+  const pages = Object.keys(routes).map(route => <PageLink key={route} to={routes[route]}>{routeName[route]}</PageLink>)
+
+  const RouterProviders = useComposeProviders(Router, Routes)
+  const AppProviders = useComposeProviders(ScreenSizeContextProvider)
+
+  return (
+    <AppProviders>
+      <RouterProviders>
+        <Route path={`${routes.home}`} element={<Layout pages={pages} />}>
+          {Object.keys(routeElement).map(route =>
+            <Route key={route} path={routes[route]} element={routeElement[route]} />
+          )}
+        </Route>
+      </RouterProviders>
+    </AppProviders>
+  )
+}
+
+export default App

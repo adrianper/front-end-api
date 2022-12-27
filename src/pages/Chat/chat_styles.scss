@@ -1,0 +1,14 @@
+.chat {
+    .chat__textarea {
+        justify-self: center;
+        textarea {
+            resize: none;
+            padding: 0.5em;
+        }
+    }
+
+    .chat_button {
+        justify-self: center;
+        padding: 0.5em;
+    }
+}
