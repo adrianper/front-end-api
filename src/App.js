@@ -34,15 +34,18 @@ const App = () => {
   const AppProviders = useComposeProviders(ScreenSizeContextProvider)
 
   return (
-    <AppProviders>
-      <RouterProviders>
-        <Route path={`${routes.home}`} element={<Layout pages={pages} />}>
-          {Object.keys(routeElement).map(route =>
-            <Route key={route} path={routes[route]} element={routeElement[route]} />
-          )}
-        </Route>
-      </RouterProviders>
-    </AppProviders>
+    <>
+      <h1>My react app</h1>
+      <AppProviders>
+        <RouterProviders>
+          <Route path={`${routes.home}`} element={<Layout pages={pages} />}>
+            {Object.keys(routeElement).map(route =>
+              <Route key={route} path={routes[route]} element={routeElement[route]} />
+            )}
+          </Route>
+        </RouterProviders>
+      </AppProviders>
+    </>
   )
 }
 
