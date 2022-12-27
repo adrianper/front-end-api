@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Link as PageLink } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route, Link as PageLink } from 'react-router-dom'
 import { useComposeProviders } from 'hooks'
 
 import Layout from 'layout'
