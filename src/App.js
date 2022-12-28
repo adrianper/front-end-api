@@ -4,6 +4,7 @@ import { useComposeProviders } from 'hooks'
 
 import Layout from 'layout'
 import { Chat, Home, InitAppPage, /*TestComponents*/ } from 'pages'
+import { SocketContextProvider } from 'context/SocketContext'
 import { ScreenSizeContextProvider } from 'context/ScreenSizeContext'
 
 const routes = {
@@ -31,7 +32,7 @@ const App = () => {
   const pages = Object.keys(routes).map(route => <PageLink key={route} to={routes[route]}>{routeName[route]}</PageLink>)
 
   const RouterProviders = useComposeProviders(Router, Routes)
-  const AppProviders = useComposeProviders(ScreenSizeContextProvider)
+  const AppProviders = useComposeProviders(SocketContextProvider, ScreenSizeContextProvider)
 
   return (
     <AppProviders>
