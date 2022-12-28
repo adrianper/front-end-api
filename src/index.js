@@ -2,15 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
-import { Helmet } from 'react-helmet';
 // import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Helmet>
-      <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
-    </Helmet>
     <App />
   </React.StrictMode>
 );
