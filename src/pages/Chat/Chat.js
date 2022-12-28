@@ -22,7 +22,7 @@ const Chat = () => {
     }
 
     useEffect(() => {
-        const messageHandler = message => { console.log(message); setMessages(messages => [message, ...messages]) }
+        const messageHandler = message => { setMessages(messages => [message, ...messages]) }
         socket.on('message', messageHandler)
         return () => {
             socket.off('message', messageHandler)
