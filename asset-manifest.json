@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/front-end-api/static/css/main.735df72d.css",
-    "main.js": "/front-end-api/static/js/main.e8001423.js",
+    "main.js": "/front-end-api/static/js/main.20f0f405.js",
     "static/media/IBMPlexSansArabic-Bold.ttf": "/front-end-api/static/media/IBMPlexSansArabic-Bold.d91284443c7eb554cc9f.ttf",
     "static/media/IBMPlexSansArabic-Medium.ttf": "/front-end-api/static/media/IBMPlexSansArabic-Medium.6d320405b2c4366ea39d.ttf",
     "static/media/IBMPlexSansArabic-ExtraLight.ttf": "/front-end-api/static/media/IBMPlexSansArabic-ExtraLight.c9c7b1fff96b0c0dcc37.ttf",
@@ -13,10 +13,10 @@
     "static/media/logo.svg": "/front-end-api/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/front-end-api/index.html",
     "main.735df72d.css.map": "/front-end-api/static/css/main.735df72d.css.map",
-    "main.e8001423.js.map": "/front-end-api/static/js/main.e8001423.js.map"
+    "main.20f0f405.js.map": "/front-end-api/static/js/main.20f0f405.js.map"
   },
   "entrypoints": [
     "static/css/main.735df72d.css",
-    "static/js/main.e8001423.js"
+    "static/js/main.20f0f405.js"
   ]
 }
