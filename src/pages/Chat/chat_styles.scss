@@ -12,4 +12,14 @@
         padding: 0.5em;
         height: fit-content;
     }
+
+    .message_container {
+        .message_user {
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            font-weight: 700;
+            color: var(--text-color--black);
+        }
+    }
 }

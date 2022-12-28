@@ -39,9 +39,12 @@ const Chat = () => {
                 </Grid>
             </form>
 
-            <Grid>
+            <Grid className='message_container' columns='minmax(0, 5em) auto' gap='1em'>
                 {messages.map((message, i) =>
-                    <p key={i} className='message'>{message.user}: {message.content}</p>
+                    <React.Fragment key={i}>
+                        <p title={message.user} className='message_user'>{message.user}:</p>
+                        <p className='message_content'>{message.content}</p>
+                    </React.Fragment>
                 )}
             </Grid>
 
