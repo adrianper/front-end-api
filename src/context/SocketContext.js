@@ -2,9 +2,9 @@ import React, { createContext, useEffect, useState } from 'react'
 import io from 'socket.io-client'
 
 const socket = io('http://localhost:8080')
-// const socket = io('http://fastify-prisma-api-test-main.us-east-2.elasticbeanstalk.com') //For production
+// const socket = io('https://fp-api.magiei.app') //For deploy
 
-const SocketContext = createContext('')
+const SocketContext = createContext({isConnected: false, socket: {}})
 
 export const SocketContextProvider = ({ children }) => {
 
