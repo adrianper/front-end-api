@@ -1,15 +1,21 @@
 import { Grid, TextField } from 'components'
 import React, { useEffect, useState } from 'react'
 import './chat_styles.scss'
-import useSocket from 'context/hooks/useSocket'
+import useSocket from 'context/contextHooks/useSocket'
+import { useSelector } from 'react-redux'
 
 const Chat = () => {
 
-    const { socket } = useSocket()
-
+    // ----------STATE----------
     const [user, setUser] = useState('')
     const [message, setMessage] = useState('')
     const [messages, setMessages] = useState([])
+
+    // ----------HOOKS----------
+    const { socket } = useSocket()
+
+    // ----------REDUX/CONTEXT----------
+    const { auth } = useSelector(store => store)
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -29,9 +35,13 @@ const Chat = () => {
         }
     }, [])
 
+    useEffect(() => {
+        if(auth.user) setUser(auth.user.email)
+    }, [])
+    
     return (
         <Grid className='chat' gap='0.5em'>
-            <TextField maxWidth='20em' label='User' value={user} onChange={setUser} />
+            <TextField disabled={!!auth.user} maxWidth='20em' label='User' value={user} onChange={setUser} />
             <form onSubmit={handleSubmit}>
                 <Grid w100 className='chat__textarea' gap='0.5em' maxWidth='90%' columns='1fr auto' itemsY='end'>
                     <TextField label='Message' value={message} onChange={setMessage} />

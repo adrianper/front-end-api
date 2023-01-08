@@ -1,4 +1,4 @@
-import { useScreenSize } from './hooks'
+import { useScreenSize } from './contextHooks'
 import React, { createContext } from 'react'
 
 const ScreenSizeContext = createContext('')

@@ -1,0 +1,25 @@
+.side_menu {
+    height: 100vh;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s width;
+    overflow: hidden;
+
+    &:not(.open) {
+        width: 0;
+    }
+
+    &.open {
+        width: 25rem;
+        border-right: 2px solid var(--border-color--third-alter);
+    }
+
+    .side_menu__link_container {
+        margin: 1rem;
+
+        a {
+            font-size: var(--text-size--4);
+            color: var(--text-color--third);
+            font-weight: bold;
+        }
+    }
+
+}

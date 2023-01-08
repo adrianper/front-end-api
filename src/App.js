@@ -1,49 +1,37 @@
 import React from 'react'
-import { HashRouter as Router, Routes, Route, Link as PageLink } from 'react-router-dom'
+import { HashRouter as Router, Routes, Route } from 'react-router-dom'
 import { useComposeProviders } from 'hooks'
 
-import Layout from 'layout'
-import { Chat, Home, InitAppPage, /*TestComponents*/ } from 'pages'
+import { Provider as ReduxProvider } from 'react-redux'
 import { SocketContextProvider } from 'context/SocketContext'
 import { ScreenSizeContextProvider } from 'context/ScreenSizeContext'
+import { routes } from 'config/routes'
 
-const routes = {
-  home: '/',
-  app: '/app',
-  chat: '/chat',
-  // testComponents: '/testComponents',
-}
+import store from 'redux/store'
 
-const routeName = {
-  home: 'Home',
-  app: 'App',
-  chat: 'Chat',
-  // testComponents: 'Test Components',
-}
-
-const routeElement = {
-  home: <Home />,
-  app: <InitAppPage />,
-  chat: <Chat />,
-  // testComponents: <TestComponents />,
-}
+import Layout from 'layout'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { SideMenuContextProvider } from 'context/SideMenuContext'
 
 const App = () => {
-  const pages = Object.keys(routes).map(route => <PageLink key={route} to={routes[route]}>{routeName[route]}</PageLink>)
-
   const RouterProviders = useComposeProviders(Router, Routes)
-  const AppProviders = useComposeProviders(SocketContextProvider, ScreenSizeContextProvider)
+  const AppProviders = useComposeProviders(SocketContextProvider, ScreenSizeContextProvider, SideMenuContextProvider)
 
   return (
-    <AppProviders>
-      <RouterProviders>
-        <Route path={`${routes.home}`} element={<Layout pages={pages} />}>
-          {Object.keys(routeElement).map(route =>
-            <Route key={route} path={routes[route]} element={routeElement[route]} />
-          )}
-        </Route>
-      </RouterProviders>
-    </AppProviders>
+    <ReduxProvider store={store}>
+      <ToastContainer />
+      <AppProviders>
+        <RouterProviders>
+          <Route path={routes.home.path} element={<Layout />}>
+            {Object.keys(routes).map(route =>
+              <Route key={route} path={routes[route].path} element={routes[route].element} />
+            )}
+          </Route>
+          {/* <Route path='' */}
+        </RouterProviders>
+      </AppProviders>
+    </ReduxProvider>
   )
 }
 

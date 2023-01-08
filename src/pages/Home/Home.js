@@ -1,10 +1,11 @@
+import { Grid } from 'components'
 import React from 'react'
 
 const Home = () => {
     return (
-        <div style={{ display: 'grid', placeContent: 'center' }}>
-            Hello Home!
-        </div>
+        <Grid contentX="center" contentY="center">
+            <h1>Hello Home!</h1>
+        </Grid>
     )
 }
 

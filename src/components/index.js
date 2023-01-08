@@ -17,3 +17,6 @@ export { default as Loading } from './loading/Loading'
 
 // ---------------------------MODAL---------------------------
 export { default as MessageBox } from './modal/MessageBox'
+
+// ---------------------------MODAL---------------------------
+export { default as Button } from './buttons/Button'
