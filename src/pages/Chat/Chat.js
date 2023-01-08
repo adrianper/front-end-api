@@ -1,4 +1,4 @@
-import { Grid, TextField } from 'components'
+import { Button, Grid, TextField } from 'components'
 import React, { useEffect, useState } from 'react'
 import './chat_styles.scss'
 import useSocket from 'context/contextHooks/useSocket'
@@ -45,7 +45,7 @@ const Chat = () => {
             <form onSubmit={handleSubmit}>
                 <Grid w100 className='chat__textarea' gap='0.5em' maxWidth='90%' columns='1fr auto' itemsY='end'>
                     <TextField label='Message' value={message} onChange={setMessage} />
-                    <button className='chat_button'>Send</button>
+                    <Button type="submit">Send</Button>
                 </Grid>
             </form>
 
