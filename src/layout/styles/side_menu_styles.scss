@@ -16,6 +16,7 @@
         margin: 1rem;
 
         a {
+            display: flex;
             font-size: var(--text-size--4);
             color: var(--text-color--third);
             font-weight: bold;

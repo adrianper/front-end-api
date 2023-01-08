@@ -17,12 +17,8 @@ const UsersPosts = () => {
         if (response.data) setUsers(response.data)
     }
 
-    // useEffect(() => {
-    //     usersPostsRequest()
-    // }, [])
-
     return (
-        <Grid gap="1em" itemsX="center">
+        <Grid gap="1rem" padding="1rem" itemsX="center">
             <h2>Users</h2>
             {users.length === 0 &&
                 <Button onClick={usersPostsRequest}>Show users</Button>

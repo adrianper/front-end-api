@@ -1,15 +1,20 @@
 import { Chat, Home, InitAppPage, Login, ReduxCounter, Signup, UsersPosts, /*TestComponents*/ } from 'pages'
+import { FaReact } from 'react-icons/fa'
+import { AiFillHome, AiOutlineLogin, AiOutlineCalculator } from 'react-icons/ai'
+import { BsFilePost, BsFillChatLeftDotsFill } from 'react-icons/bs'
 
 export const routes = {
     home: {
         path: '/',
         linkName: 'Home',
-        element: <Home />
+        element: <Home />,
+        icon: <AiFillHome />
     },
     login: {
         path: '/login',
         linkName: 'Login',
-        element: <Login />
+        element: <Login />,
+        icon: <AiOutlineLogin />
     },
     signup: {
         path: '/signup',
@@ -19,22 +24,26 @@ export const routes = {
     chat: {
         path: '/chat',
         linkName: 'Chat',
-        element: <Chat />
+        element: <Chat />,
+        icon: <BsFillChatLeftDotsFill />
     },
-    users: {
+    users_posts: {
         path: '/users',
         linkName: 'Users posts',
-        element: <UsersPosts />
+        element: <UsersPosts />,
+        icon: <BsFilePost />
     },
     app: {
         path: '/app',
         linkName: 'App',
-        element: <InitAppPage />
+        element: <InitAppPage />,
+        icon: <FaReact />
     },
     redux_counter: {
         path: '/redux_counter',
         linkName: 'Counter',
-        element: <ReduxCounter />
+        element: <ReduxCounter />,
+        icon: <AiOutlineCalculator />
     },
     // testComponents: {
     //   path: '/testComponents',
@@ -45,4 +54,4 @@ export const routes = {
 
 export const headerRoutes = ['home', 'login', 'signup']
 
-export const sideMenuRoutes = ['chat', 'users', 'app', 'redux_counter']
+export const sideMenuRoutes = ['chat', 'users_posts', 'app', 'redux_counter']

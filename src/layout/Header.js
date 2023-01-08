@@ -11,26 +11,22 @@ import useSideMenuContext from 'hooks/useSideMenuContext'
 
 const Header = () => {
 
-    const { isOpen, toggleSideMenu } = useSideMenuContext()
-
-    const handleClickBars = () => {
-        console.log('Side Menu is open ? ', !isOpen)
-        toggleSideMenu()
-    }
+    const { toggleSideMenu } = useSideMenuContext()
 
     return (
-        <Grid className="header" itemsX="center" itemsY="center" padding="0.8em" direction="column" contentX="space-between">
-            <Flex className="side_menu_bars" onClick={handleClickBars}>
+        <Flex className="header" align="center" justify="space-between" padding="0.8em">
+            <Flex className="side_menu_bars" onClick={toggleSideMenu}>
                 <AiOutlineBars size="25" />
             </Flex>
             <Grid gap="1em" direction="column">
                 {headerRoutes.map(route =>
                     <PageLink key={route} to={routes[route].path} >
+                        {routes[route].icon} &nbsp;
                         {routes[route].linkName}
                     </PageLink>
                 )}
             </Grid>
-        </Grid>
+        </Flex>
     )
 }
 

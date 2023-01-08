@@ -1,6 +1,6 @@
 .header {
     border-bottom: 2px solid var(--border-color--third-alter);
-    
+
     .side_menu_bars {
         cursor: pointer;
         color: var(--text-color--third);
@@ -8,6 +8,7 @@
     }
 
     a {
+        display: flex;
         font-size: var(--text-size--4);
         color: var(--text-color--third);
         font-weight: bold;

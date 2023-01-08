@@ -18,6 +18,7 @@ const SideMenu = () => {
                         to={routes[route].path}
                         onClick={toggleSideMenu}
                     >
+                        {routes[route].icon} &nbsp;
                         {routes[route].linkName}
                     </PageLink>
                 )}
