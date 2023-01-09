@@ -8,7 +8,7 @@ const signup = async (userData) => {
 
     if (response.data && !response.data.error) {
         localStorage.setItem('user', JSON.stringify(response.data.user))
-        setCookieOnce('x-access-token', response.data.token)
+        global.setCookieOnce('x-access-token', response.data.token)
     } else {
         localStorage.removeItem('user')
     }
@@ -21,7 +21,7 @@ const login = async (userData) => {
 
     if (response.data && !response.data.error) {
         localStorage.setItem('user', JSON.stringify(response.data.user))
-        setCookieOnce('x-access-token', response.data.token)
+        global.setCookieOnce('x-access-token', response.data.token)
     } else {
         localStorage.removeItem('user')
     }
