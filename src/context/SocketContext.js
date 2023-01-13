@@ -1,8 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react'
+import { hostURL } from 'scripts/generalVariables'
 import io from 'socket.io-client'
 
-const socket = io('http://localhost:8080')
-// const socket = io('https://fp-api.magiei.app') //For deploy
+const socket = io(hostURL)
 
 const SocketContext = createContext({isConnected: false, socket: {}})
 
