@@ -6,6 +6,7 @@ const Home = () => {
     return (
         <Grid contentX="center" contentY="center" itemsX="center">
             <AiFillHome size={30}/>
+            
             <h1>Home Page</h1>
         </Grid>
     )
