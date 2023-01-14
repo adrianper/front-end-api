@@ -1,31 +1,28 @@
-name: Continuous Integration (CI)
+name: Continuous Deployment (CD)
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Continuous Integration (CI)"]
+    # Execute the workflow once the CI workflow is completed on main branch.
+    types: [completed]
     branches:
-      # We can define multiple branches as well      
       - main
-  pull_request:
-    branches:
-      - main
-      
+
 jobs:
-  build:
+  deploy:
     # Defines the type of runner the job runs on
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout to the repository
         uses: actions/checkout@v2
-        
+
       - name: Set up NodeJS environment
         uses: actions/setup-node@v2
         with:
-          # Reads the node version from the .nvmrc file itself 
+          # Reads the node version from the .nvmrc file itself
           node-version-file: '.nvmrc'
-          # The node version can be hard-coded 
-          # node-version: 14
-        
+
       # Consider this as an add on to optimize the execution of actions
       - name: Cache node modules
         id: cache-npm
@@ -40,17 +37,12 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-       
       - name: Install package dependencies
         run: npm install
-      
-      - name: Check linting and formatting
-        # Custom script for checking the linting and formatting being in place
-        run: npm run lint
-      
-      # Run test cases and this could ensure minimum coverage as well if set
-      - name: Execute test cases
-        run: npm run test
-        
-      - name: Create test build
-        run: npm run build
+
+      - name: Deploy the app
+        # This assumes that there is deploy script, change as required
+        run: npm run deploy
+        # Environment secrets, generally stored in Github Secrets (un-comment as required)
+        # env:
+          # deployment_token: ${{ secrets.ACTIONS_DEPLOYMENT_TOKEN }}
