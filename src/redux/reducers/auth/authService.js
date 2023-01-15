@@ -1,5 +1,5 @@
 import axios from "axios"
-import { setCookieOnce } from "scripts/generalFunctions"
+// import { setCookieOnce } from "scripts/generalFunctions"
 
 const signup = async (userData) => {
     const response = await axios.post('/auth/signup', userData, /*{
@@ -31,5 +31,6 @@ const login = async (userData) => {
     return response.data
 }
 
+const serviceActions = { signup, login }
 
-export default { signup, login }
+export default serviceActions

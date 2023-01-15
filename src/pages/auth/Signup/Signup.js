@@ -10,7 +10,7 @@ const Signup = () => {
     const [formData, setFormData] = useState({ name: '', email: '', password: '' })
 
     const { auth } = useSelector(store => store)
-    const { user, authenticated } = auth
+    const { /*user, */authenticated } = auth
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -40,7 +40,7 @@ const Signup = () => {
 
     useEffect(() => {
         if (authenticated) navigate('/users')
-    }, [authenticated, user])
+    }, [authenticated, navigate])
 
     return (
         <Grid className="login" itemsX="center" gap="1em">

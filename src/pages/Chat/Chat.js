@@ -28,16 +28,17 @@ const Chat = () => {
     }
 
     useEffect(() => {
+        console.log('Socket changed')
         const messageHandler = message => { setMessages(messages => [message, ...messages]) }
         socket.on('message', messageHandler)
         return () => {
             socket.off('message', messageHandler)
         }
-    }, [])
+    }, [socket])
 
     useEffect(() => {
         if(auth.user) setUser(auth.user.email)
-    }, [])
+    }, [auth.user])
     
     return (
         <Grid className='chat' gap='0.5em'>

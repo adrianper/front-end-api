@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Button, Grid } from 'components'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { toast } from 'react-toastify'
 
 const UsersPosts = () => {

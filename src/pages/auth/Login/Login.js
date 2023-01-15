@@ -8,7 +8,7 @@ import { Button, Grid, TextField } from 'components'
 import './login.scss'
 import { login, reset } from 'redux/reducers/auth/authSlice'
 import { toast } from 'react-toastify'
-import { setCookieOnce } from 'scripts/generalFunctions'
+// import { setCookieOnce } from 'scripts/generalFunctions'
 
 
 // withCredentials: true, //[allow sert 3rd party cookies] / [send cookies]
@@ -18,7 +18,7 @@ const Login = () => {
     const [formData, setFormData] = useState({ email: '', password: '' })
 
     const { auth } = useSelector(store => store)
-    const { user, authenticated } = auth
+    const { /*user, */authenticated } = auth
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -65,7 +65,7 @@ const Login = () => {
 
     useEffect(() => {
         if (authenticated) navigate('/users')
-    }, [authenticated, user])
+    }, [authenticated, navigate])
 
     return (
         <Grid className="login" itemsX="center" gap="1em">
