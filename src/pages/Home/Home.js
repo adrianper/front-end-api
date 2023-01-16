@@ -3,10 +3,11 @@ import React, { useEffect } from 'react'
 import { AiFillHome } from 'react-icons/ai'
 
 const Home = () => {
+    
     useEffect(() => {
-        if (global.getCookieToken() == '')
-            console.log('cookie token is empty')
+        console.log('Home effect runs once')
     }, [])
+    
     return (
         <Grid contentX="center" contentY="center" itemsX="center">
             <AiFillHome size={30} />
