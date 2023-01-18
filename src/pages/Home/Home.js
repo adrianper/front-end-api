@@ -10,7 +10,7 @@ const Home = () => {
     
     return (
         <Grid contentX="center" contentY="center" itemsX="center">
-            <AiFillHome size={30} />
+            <AiFillHome color='var(--text-color--third)' size={30} />
             <h1>Home Page</h1>
         </Grid>
     )

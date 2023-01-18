@@ -17,7 +17,7 @@ axios.interceptors.response.use((response) => {
     // })
     if (error.response.data.code === 'FST_JWT_BAD_REQUEST') {
         toast.info('Please login', { autoClose: 1500 })
-        window.location.href = '/#/login'
+        window.location.href = window.location.href.split('#')[0] + '#/login'
     }
     else toast.error(error.response.data.error)
     return Promise.reject(error)
