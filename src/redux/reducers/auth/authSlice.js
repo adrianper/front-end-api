@@ -3,9 +3,9 @@ import authService from './authService'
 
 const user = JSON.parse(localStorage.getItem('user'))
 
-const initState = {
-    user: null,
-    authenticated: false,
+const initialState = {
+    user: user,
+    authenticated: !!user,
     isLoading: false,
     message: '',
 }
@@ -15,6 +15,7 @@ export const signup = createAsyncThunk('/auth/signup', async (userData, thunkAPI
         return await authService.signup(userData)
     } catch (error) {
         const errorMessage = (error.response && error.response.data && error.response.data.message)
+            || (error.response && error.response.data && error.response.data.error)
             || error.message || error.toString()
 
         return thunkAPI.rejectWithValue(errorMessage)
@@ -26,6 +27,7 @@ export const login = createAsyncThunk('/auth/login', async (userData, thunkAPI) 
         return await authService.login(userData)
     } catch (error) {
         const errorMessage = (error.response && error.response.data && error.response.data.message)
+            || (error.response && error.response.data && error.response.data.error)
             || error.message || error.toString()
 
         return thunkAPI.rejectWithValue(errorMessage)
@@ -34,14 +36,12 @@ export const login = createAsyncThunk('/auth/login', async (userData, thunkAPI) 
 
 const authSlice = createSlice({
     name: 'counter',
-    initialState: {
-        ...initState,
-        user: user ?? null
-    },
+    initialState,
     reducers: {
         reset: state => {
+            console.log(initialState)
             Object.keys(state).forEach(key => {
-                state[key] = initState[key]
+                state[key] = initialState[key]
             })
         },
     },

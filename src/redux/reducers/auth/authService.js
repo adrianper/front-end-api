@@ -1,17 +1,15 @@
 import axios from "axios"
-// import { setCookieOnce } from "scripts/generalFunctions"
 
 const signup = async (userData) => {
-    const response = await axios.post('/auth/signup', userData, /*{
-        withCredentials: true,
-    }*/)
+    const response = await axios.post('/auth/signup', userData)
 
     if (response.data && !response.data.error) {
         localStorage.setItem('user', JSON.stringify(response.data.user))
-        global.setCookieOnce('x-access-token', response.data.token)
+        localStorage.setItem('token', response.data.token)
         axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
     } else {
         localStorage.removeItem('user')
+        localStorage.removeItem('token')
     }
 
     return response.data
@@ -20,12 +18,14 @@ const signup = async (userData) => {
 const login = async (userData) => {
     const response = await axios.post('/auth/login', userData)
 
+    console.log('Enter here: ', response)
     if (response.data && !response.data.error) {
         localStorage.setItem('user', JSON.stringify(response.data.user))
-        global.setCookieOnce('x-access-token', response.data.token)
+        localStorage.setItem('token', response.data.token)
         axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`
     } else {
         localStorage.removeItem('user')
+        localStorage.removeItem('token')
     }
 
     return response.data

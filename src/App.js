@@ -11,7 +11,6 @@ import store from 'redux/store'
 
 import Layout from 'layout'
 import { ToastContainer } from 'react-toastify'
-import 'react-toastify/dist/ReactToastify.css'
 import { SideMenuContextProvider } from 'context/SideMenuContext'
 
 const App = () => {

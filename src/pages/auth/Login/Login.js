@@ -8,8 +8,6 @@ import { Button, Grid, TextField } from 'components'
 import './login.scss'
 import { login, reset } from 'redux/reducers/auth/authSlice'
 import { toast } from 'react-toastify'
-// import { setCookieOnce } from 'scripts/generalFunctions'
-
 
 // withCredentials: true, //[allow sert 3rd party cookies] / [send cookies]
 // credentials: 'include' //[send cookies]
@@ -30,9 +28,9 @@ const Login = () => {
     const verifyEmptyValues = () => {
         const errors = []
         Object.keys(formData).forEach(input => {
-            if (formData[input] === '') errors.push(`${input} could not be empty`)
+            if (formData[input] === '') errors.push(`${input} is required.`)
         })
-        if (errors.length > 0) alert(errors.map(err => err + '\n'))
+        if (errors.length > 0) errors.forEach(errorMessage => toast.error(errorMessage))
         return errors.length === 0
     }
 
@@ -44,23 +42,15 @@ const Login = () => {
         dispatch(login(formData)).then(res => {
             if (res.payload.error) return toast.error(res.payload.error)
         })
-        // const response = await axios.post('/auth/login', formData, {
-        //     withCredentials: true,
-        // })
-
-        // if (!response.data) return console.log(response)
-        // if (response.data.error) return toast.error(response.data.error)
-
-        // setCookieOnce('x-access-token', response.data.token)
-        // navigate('/users')
     }
 
     const usersPostsRequest = async () => {
         await axios.get('/users_posts')
-            .catch(error => {
-                const errorMessage = (error.response && error.response.data.error) || error.message
-                toast.error(errorMessage)
-            })
+        .catch(error => {
+            console.error(error)
+            // const errorMessage = (error.response && error.response.data.error) || error.message
+            // toast.error(errorMessage)
+        })
     }
 
     useEffect(() => {
